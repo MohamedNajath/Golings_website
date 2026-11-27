@@ -1,0 +1,73 @@
+import { Code2, AppWindow, Globe, PenTool, Palette, Lightbulb, Wrench, LucideIcon } from 'lucide-react'
+
+export interface Service {
+  slug: string; title: string; icon: LucideIcon; short: string; intro: string
+  benefits: string[]; challenges: string[]; solutions: string[]; tech: string[]
+  faqs: { q: string; a: string }[]
+}
+
+export const processSteps = [
+  { t: 'Discover', d: 'We learn your goals, users and constraints.' },
+  { t: 'Design', d: 'Wireframes and prototypes you can react to.' },
+  { t: 'Develop', d: 'Iterative builds with regular demos.' },
+  { t: 'Deliver and support', d: 'Launch, handover and ongoing care.' },
+]
+
+export const services: Service[] = [
+  { slug: 'custom-software-development', title: 'Custom Software Development', icon: Code2,
+    short: 'Tailor-made systems that automate your operations.',
+    intro: 'We build software around the way your business actually works, instead of forcing your team into an off-the-shelf tool.',
+    benefits: ['Fits your workflow exactly', 'You own the solution', 'Scales as you grow'],
+    challenges: ['Manual, repetitive processes', 'Disconnected spreadsheets and tools', 'Off-the-shelf software that almost fits'],
+    solutions: ['Workflow automation', 'Internal management systems', 'Integrations with your existing tools'],
+    tech: ['Java Spring Boot', 'PostgreSQL', 'React', 'REST APIs'],
+    faqs: [{ q: 'How long does a project take?', a: 'It depends on scope. After discovery we give you a phased plan with clear milestones.' }, { q: 'Will we own the code?', a: 'Ownership terms are agreed in the contract before work starts.' }] },
+  { slug: 'web-application-development', title: 'Web Application Development', icon: AppWindow,
+    short: 'Fast, secure apps your customers and staff can rely on.',
+    intro: 'Browser-based applications with dashboards, accounts and data, built to be fast and maintainable.',
+    benefits: ['Works on any device', 'No installation needed', 'Easy to update'],
+    challenges: ['Slow or outdated web tools', 'Unclear user roles and permissions', 'Data locked in files'],
+    solutions: ['Role-based dashboards', 'Secure authentication', 'API-driven architecture'],
+    tech: ['React', 'TypeScript', 'Spring Boot', 'PostgreSQL'],
+    faqs: [{ q: 'Do you build mobile-friendly apps?', a: 'Yes. Every interface is responsive by default.' }, { q: 'Can you extend an existing app?', a: 'Yes, after a short code review.' }] },
+  { slug: 'website-development', title: 'Website Development', icon: Globe,
+    short: 'Responsive, search-friendly sites that load quickly.',
+    intro: 'Professional websites that present your business clearly and are easy to find and update.',
+    benefits: ['Mobile-first layouts', 'SEO-ready structure', 'Fast loading'],
+    challenges: ['Outdated design', 'Poor mobile experience', 'Hard to update content'],
+    solutions: ['Modern responsive design', 'Content you can edit', 'Performance and SEO basics built in'],
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    faqs: [{ q: 'Can you redesign my current site?', a: 'Yes. We keep what works and improve the rest.' }, { q: 'Is hosting included?', a: 'We can advise on and set up hosting as part of the project.' }] },
+  { slug: 'ui-ux-design', title: 'UI/UX Design', icon: PenTool,
+    short: 'Interfaces that are clear, accessible and easy to use.',
+    intro: 'Research-informed design that makes products easy to understand and pleasant to use.',
+    benefits: ['Fewer user errors', 'Accessible by design', 'Consistent look and feel'],
+    challenges: ['Confusing navigation', 'Inconsistent screens', 'Users abandoning key tasks'],
+    solutions: ['User flows and wireframes', 'Interactive prototypes', 'Reusable design systems'],
+    tech: ['Figma', 'Design tokens', 'Prototyping', 'Usability testing'],
+    faqs: [{ q: 'Do you design before building?', a: 'Yes. Designs are reviewed with you before development starts.' }, { q: 'Can you hand designs to our developers?', a: 'Yes, with organized files and specs.' }] },
+  { slug: 'graphic-design', title: 'Graphic Design', icon: Palette,
+    short: 'Branding and visuals that fit your product.',
+    intro: 'Logos, brand assets and marketing visuals that keep your business consistent everywhere.',
+    benefits: ['Recognizable brand', 'Consistent materials', 'Print and digital ready'],
+    challenges: ['Mismatched visuals', 'No brand guidelines', 'Low-quality marketing assets'],
+    solutions: ['Logo and brand kits', 'Social and marketing graphics', 'Presentation and print design'],
+    tech: ['Illustrator', 'Photoshop', 'Figma', 'Brand guidelines'],
+    faqs: [{ q: 'Which files do I receive?', a: 'Editable source files and export-ready formats.' }, { q: 'Can you match our existing brand?', a: 'Yes.' }] },
+  { slug: 'it-consulting', title: 'IT Consulting', icon: Lightbulb,
+    short: 'Practical guidance on architecture, tools and priorities.',
+    intro: 'Independent advice to help you choose the right technology and plan your roadmap.',
+    benefits: ['Clear technical direction', 'Avoid costly mistakes', 'Plans that match your budget'],
+    challenges: ['Unsure which technology to choose', 'Aging systems', 'No technical roadmap'],
+    solutions: ['Technology assessments', 'Architecture reviews', 'Roadmaps and estimates'],
+    tech: ['Architecture review', 'Cloud basics', 'Security practices', 'Documentation'],
+    faqs: [{ q: 'Is consulting separate from development?', a: 'Yes. You can take our advice and build with anyone.' }, { q: 'What do we get at the end?', a: 'A written report with prioritized recommendations.' }] },
+  { slug: 'software-maintenance', title: 'Software Maintenance and Support', icon: Wrench,
+    short: 'Updates, fixes and monitoring after launch.',
+    intro: 'Ongoing care that keeps your software secure, current and working.',
+    benefits: ['Fewer outages', 'Regular security updates', 'Predictable support'],
+    challenges: ['Bugs after launch', 'Outdated dependencies', 'No one responsible for the system'],
+    solutions: ['Bug fixing and updates', 'Dependency and security patching', 'Small feature improvements'],
+    tech: ['Monitoring', 'CI/CD', 'Backups', 'Issue tracking'],
+    faqs: [{ q: 'Can you support software you did not build?', a: 'Often yes, after an initial review.' }, { q: 'How do I request support?', a: 'Through the contact form or the channel agreed in your plan.' }] },
+]
