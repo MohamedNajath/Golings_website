@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Award, Briefcase, CheckCircle2, FileText, GraduationCap, Handshake, Info, Laptop, MessageSquareText, Rocket, Sparkles, Users, Building2, Wifi } from 'lucide-react'
 import { Reveal, TechLogo } from '../components/ui'
@@ -10,7 +10,7 @@ import Faq from '../components/internship/Faq'
 import ApplicationForm from '../components/internship/ApplicationForm'
 import { useSeo } from '../hooks/useSeo'
 import { SITE_URL } from '../data/internshipConfig'
-import { approach, careerPoints, deliverables, eligible, faqs, mentorship, modes, programBySlug, programLogos, programs, projectActivities, techCategories, Slug } from '../data/internship'
+import { approach, careerPoints, deliverables, eligible, faqs, mentorship, modes, programLogos, programs, projectActivities, techCategories, Slug } from '../data/internship'
 
 const SEO_DESC = 'Join Goalings for six-month professional internship training in Software Engineering, Full Stack Development, Web Development, QA Engineering, UI/UX Design, and Digital Marketing. Gain practical experience through project-based learning.'
 const Title = ({ eyebrow, title, text, dark }: { eyebrow?: string; title: string; text?: string; dark?: boolean }) => (
@@ -32,7 +32,6 @@ export default function InternshipTraining() {
   // Scroll to #apply / #programs even when arriving from a card on this same page (query string changes)
   useEffect(() => { if (hash) setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80) }, [hash, search])
 
-  const swe = programBySlug('software-engineering')!
   const relevant = new Set(techCategories.filter(c => c.programs.includes(techTab)).map(c => c.name))
   return (
     <>
@@ -61,26 +60,13 @@ export default function InternshipTraining() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-6">{programs.map((p, i) => <div key={p.slug} className={`${i === 4 ? 'md:col-span-2 lg:col-span-3' : i === 3 ? 'lg:col-span-3' : 'lg:col-span-2'} flex`}><div className="w-full"><ProgramCard p={p} wide={i > 2} /></div></div>)}</div>
       </div></section>
 
-      {/* 5. Software engineering curriculum */}
-      <section id="curriculum" className="section scroll-mt-20 dark-sec"><div className="wrap">
-        <Title dark eyebrow={swe.title} title="Software Engineering Curriculum" text={swe.description} />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{swe.groups.map(g => (
-          <Reveal key={g.title}><div className="h-full rounded-2xl border border-white/15 bg-white/5 p-5 transition hover:border-orange"><h3 className="mb-3 font-bold text-orange">{g.title}</h3>
-            <ul className="space-y-1.5 text-sm text-slate-200">{g.items.map(i => <li key={i} className="flex gap-2"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-orange" />{i}</li>)}</ul></div></Reveal>))}</div>
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl border border-white/15 bg-white/5 p-5"><h3 className="mb-1 font-bold">{swe.practicalTitle}</h3><p className="mb-3 text-sm text-slate-300">{swe.practicalText}</p><ul className="flex flex-wrap gap-2">{swe.practical.map(x => <li key={x} className="rounded-full border border-white/20 px-3 py-1 text-xs">{x}</li>)}</ul></div>
-          <div className="rounded-2xl border border-white/15 bg-white/5 p-5"><h3 className="mb-3 font-bold">Career opportunities</h3><ul className="flex flex-wrap gap-2">{swe.careers.map(x => <li key={x} className="rounded-full bg-orange/15 px-3 py-1 text-xs font-semibold text-orange">{x}</li>)}</ul></div>
-        </div>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row"><Link to="/internship-training?program=software-engineering#apply" className="btn-p">Apply for Software Engineering <ArrowRight size={18} /></Link><Link to={`/internship-training/${swe.slug}`} className="btn-g">View full program page</Link></div>
-      </div></section>
-
-      {/* 6. Roadmap */}
+      {/* 5. Roadmap */}
       <section id="roadmap" className="section scroll-mt-20 bg-navy-2 text-white" style={{ background: 'linear-gradient(180deg,#0b1f3d,#071B35)' }}><div className="wrap">
         <Title dark eyebrow="Roadmap" title="Your Six-Month Professional Journey." text="A structured six-month learning and development experience designed to build technical confidence and practical industry knowledge." />
         <Roadmap />
       </div></section>
 
-      {/* 7. Real-world projects */}
+      {/* 6. Real-world projects */}
       <section className="section bg-white"><div className="wrap">
         <Title eyebrow="Project-based learning" title="Don't Just Learn. Build Real Products." text="At Goalings, practical experience is an important part of the training process. Interns participate in supervised development activities and work on assigned project modules based on their specialization." />
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{projectActivities.map((a, i) => <motion.li key={a} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: (i % 4) * 0.05 }} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm font-semibold text-navy"><Rocket size={18} className="shrink-0 text-orange" />{a}</motion.li>)}</ul>
@@ -90,13 +76,13 @@ export default function InternshipTraining() {
         </div>
       </div></section>
 
-      {/* 8. Training modes */}
+      {/* 7. Training modes */}
       <section className="section"><div className="wrap">
         <Title eyebrow="Training modes" title="Flexible Learning. Real Industry Experience." />
         <div className="grid gap-5 md:grid-cols-3">{modes.map(m => { const I = modeIcon[m.key]; return <Reveal key={m.key}><div className="card h-full"><span className="icon mb-4 h-14 w-14"><I size={26} /></span><h3 className="text-lg font-bold text-navy">{m.title}</h3><p className="mt-2 text-sm text-slate-600">{m.text}</p></div></Reveal> })}</div>
       </div></section>
 
-      {/* 9. AI-powered technology environment */}
+      {/* 8. AI-powered technology environment */}
       <section className="section dark-sec"><div className="wrap">
         <Title dark eyebrow="Technology environment" title="Learn With Modern Industry Technologies." text="Goalings embraces modern software engineering practices and AI-driven development approaches. Our programs introduce participants to relevant current technologies and tools. Choose a program to see what applies to it." />
         <div role="tablist" aria-label="Choose a program" className="mb-6 flex gap-2 overflow-x-auto pb-1 no-scrollbar">{programs.map(p => <button key={p.slug} role="tab" aria-selected={techTab === p.slug} onClick={() => setTechTab(p.slug)} className={`min-h-[44px] shrink-0 rounded-full border px-4 text-sm font-bold transition ${techTab === p.slug ? 'border-orange bg-orange text-navy' : 'border-white/25 hover:border-orange'}`}>{p.formLabel}</button>)}</div>
@@ -107,20 +93,20 @@ export default function InternshipTraining() {
         <p className="mt-5 text-sm text-slate-400">Not every technology is covered in every specialization.</p>
       </div></section>
 
-      {/* 10. Mentorship */}
+      {/* 9. Mentorship */}
       <section className="section bg-white"><div className="wrap">
         <Title eyebrow="Mentorship" title="Learn, Collaborate, and Grow With Professional Guidance." text="Throughout the program, participants receive guidance to develop their technical abilities and professional working practices." />
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{mentorship.map((m, i) => <Reveal key={m}><li className="flex items-center gap-4 rounded-2xl border border-slate-200 p-4"><span className="icon shrink-0">{[Users, Handshake, MessageSquareText][i % 3] && (i % 3 === 0 ? <Users size={20} /> : i % 3 === 1 ? <Handshake size={20} /> : <MessageSquareText size={20} />)}</span><span className="font-semibold text-navy">{m}</span></li></Reveal>)}</ul>
       </div></section>
 
-      {/* 11. Career opportunities */}
+      {/* 10. Career opportunities */}
       <section className="section"><div className="wrap grid items-center gap-8 lg:grid-cols-2">
         <div><Title eyebrow="Career opportunities at Goalings" title="Your Performance Can Open New Doors." text="At Goalings, we value talent, dedication, professional growth, and continuous learning. Participants who demonstrate strong technical abilities, professional commitment, teamwork, and consistent performance throughout the internship may be considered for suitable employment opportunities within Goalings." />
           <p className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600"><Info size={18} className="mt-0.5 shrink-0 text-orange" />Permanent employment is not guaranteed to every intern.</p></div>
         <ul className="space-y-3">{careerPoints.map(c => <Reveal key={c}><li className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-4"><span className="icon shrink-0"><Briefcase size={20} /></span><span className="font-semibold text-navy">{c}</span></li></Reveal>)}</ul>
       </div></section>
 
-      {/* 12. Certificate */}
+      {/* 11. Certificate */}
       <section className="section dark-sec overflow-hidden"><div className="wrap grid items-center gap-10 lg:grid-cols-2">
         <div><Title dark eyebrow="Recognition" title="Your Effort Deserves Recognition." text="Upon successfully completing the six-month internship program and fulfilling the program requirements, participants will receive:" />
           <ul className="space-y-3">{deliverables.map(([t, d]) => <li key={t} className="flex gap-3"><Award size={20} className="mt-0.5 shrink-0 text-orange" /><span><strong>{t}</strong><span className="block text-sm text-slate-300">{d}</span></span></li>)}</ul></div>
@@ -136,17 +122,17 @@ export default function InternshipTraining() {
         </motion.div>
       </div></section>
 
-      {/* 13. FAQ */}
+      {/* 12. FAQ */}
       <section className="section bg-white"><div className="wrap"><div className="mx-auto mb-8 max-w-3xl"><p className="mb-2 text-sm font-bold uppercase tracking-wider text-orange">FAQ</p><h2 className="text-2xl font-extrabold text-navy sm:text-3xl md:text-4xl">Frequently Asked Questions</h2></div><Faq items={faqs} /></div></section>
 
-      {/* 14. Application form */}
+      {/* 13. Application form */}
       <section id="apply" className="section scroll-mt-20"><div className="wrap">
         <div className="mx-auto mb-8 max-w-3xl text-center"><p className="mb-2 text-sm font-bold uppercase tracking-wider text-orange">Apply</p><h2 className="text-2xl font-extrabold text-navy sm:text-3xl md:text-4xl">Apply for Your Internship at Goalings.</h2>
           <p className="mt-3 text-slate-600">Take the first step towards your professional career. Complete the application form and tell us about your educational background, interests, and career goals.</p></div>
         <ApplicationForm />
       </div></section>
 
-      {/* 15. Final CTA */}
+      {/* 14. Final CTA */}
       <section className="section pt-0"><div className="wrap"><div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy via-navy-2 to-navy px-5 py-12 text-center text-white sm:px-10 sm:py-16">
         <div className="cta-glow pointer-events-none absolute -left-20 -top-24 h-72 w-72 rounded-full bg-orange/30 blur-3xl" /><div className="cta-glow pointer-events-none absolute -bottom-28 -right-16 h-72 w-72 rounded-full bg-sky-500/25 blur-3xl" style={{ animationDelay: '-6s' }} />
         <div className="relative"><FileText className="mx-auto mb-4 text-orange" size={32} />

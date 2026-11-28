@@ -4,14 +4,14 @@
 //  Anything marked PLACEHOLDER must be replaced before launch.
 // ─────────────────────────────────────────────────────────────
 export const company = {
-  email: 'info@goalings.com',                       // PLACEHOLDER: confirm
-  phone: '+00 000 000 0000',                        // PLACEHOLDER
-  whatsapp: '',                                     // digits only with country code, e.g. '97455123456'. Leave '' to hide the WhatsApp icon
+  email: 'goalingsinc@gmail.com',                       // PLACEHOLDER: confirm
+  phone: '+94 77 199 6958',                        // PLACEHOLDER
+  whatsapp: '+94 77 199 6958',                                     // digits only with country code, e.g. '97455123456'. Leave '' to hide the WhatsApp icon
   hours: 'Sun – Thu, 9:00 AM – 5:00 PM',            // PLACEHOLDER
-  address: ['Your building and street', 'City, Country'], // PLACEHOLDER: one string per line
+  address: ['476A, Main Street,Sainthamarathu-16', 'Kalmunai, Sri Lanka'], // PLACEHOLDER: one string per line
   // Map: type your address exactly as Google Maps would find it, e.g. 'Goalings, West Bay, Doha'.
   // Leave '' to show a placeholder panel instead of a map.
-  mapQuery: '',
+  mapQuery: '476A, Main Street,Sainthamarathu-16, Kalmunai, Sri Lanka',
   // Optional: paste the "src" of Google Maps ▸ Share ▸ Embed a map for a pin on your exact spot.
   mapEmbedUrl: '',
 }
