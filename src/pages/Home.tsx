@@ -55,7 +55,7 @@ export default function Home() {
         <div className="grid gap-5 md:grid-cols-2">
           <div className="card grid overflow-hidden !p-0 md:grid-cols-[1fr_1fr]">
             <img src="/A1.jpg" alt="Training and internships" className="h-64 w-full object-cover md:h-full" />
-            <div className="p-6"><h2 className="h2">Training and internships</h2><p className="text-slate-600">Hands-on software training and internship programs for people starting careers in technology.</p><Link to="/contact" className="btn-p mt-5">Ask about programs</Link></div>
+            <div className="p-6"><h2 className="h2">Training and internships</h2><p className="text-slate-600">Hands-on software training and internship programs for people starting careers in technology.</p><Link to="/internship-training" className="btn-p mt-5">Explore programs</Link></div>
           </div>
           <div className="card flex items-center"><p className="text-slate-600">“Turning ideas into technology. Building solutions for tomorrow.”</p></div>
         </div></div></section>

@@ -6,7 +6,7 @@ import SocialLinks from './Social'
 import { company, telHref } from '../data/company'
 import { services } from '../data/services'
 
-const links = [['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/portfolio', 'Portfolio'], ['/careers', 'Careers'], ['/contact', 'Contact']]
+const links = [['/', 'Home'], ['/about', 'About'], ['/services', 'Services'], ['/portfolio', 'Portfolio'], ['/careers', 'Careers'], ['/internship-training', 'Internship & Training'], ['/contact', 'Contact']]
 
 export const Logo = () => <span className="text-lg font-extrabold tracking-[0.14em] text-white">GOAL<span className="text-orange">I</span>NGS</span>
 
@@ -14,19 +14,19 @@ export default function Layout() {
   const [open, setOpen] = useState(false)
   const { pathname } = useLocation()
   useEffect(() => { setOpen(false); window.scrollTo(0, 0) }, [pathname])
-  useEffect(() => { const f = () => { if (window.innerWidth >= 768) setOpen(false) }; window.addEventListener('resize', f); return () => window.removeEventListener('resize', f) }, [])
+  useEffect(() => { const f = () => { if (window.innerWidth >= 1024) setOpen(false) }; window.addEventListener('resize', f); return () => window.removeEventListener('resize', f) }, [])
   return (
     <>
       <header className={`sticky top-0 z-30 text-white backdrop-blur ${open ? 'bg-navy' : 'bg-navy/90'}`}>
         <div className="wrap flex h-16 items-center justify-between gap-4">
           <Link to="/" aria-label="Goalings home" className="shrink-0"><Logo /></Link>
-          <nav aria-label="Main" className="hidden gap-5 text-sm text-slate-300 md:flex lg:gap-7">
+          <nav aria-label="Main" className="hidden gap-4 text-[13px] text-slate-300 lg:flex xl:gap-6 xl:text-sm">
             {links.map(([to, l]) => <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => isActive ? 'text-orange' : 'hover:text-orange'}>{l}</NavLink>)}
           </nav>
-          <Link to="/contact" className="btn-p hidden !py-2 md:inline-flex">Let’s talk</Link>
-          <button className="-mr-2 grid h-11 w-11 place-items-center md:hidden" aria-label="Toggle menu" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+          <Link to="/contact" className="btn-p hidden !py-2 lg:inline-flex">Let’s talk</Link>
+          <button className="-mr-2 grid h-11 w-11 place-items-center lg:hidden" aria-label="Toggle menu" aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
         </div>
-        {open && <nav id="mobile-nav" aria-label="Mobile" className="wrap max-h-[calc(100svh-64px)] overflow-y-auto border-t border-white/10 pb-6 pt-2 md:hidden">
+        {open && <nav id="mobile-nav" aria-label="Mobile" className="wrap max-h-[calc(100svh-64px)] overflow-y-auto border-t border-white/10 pb-6 pt-2 lg:hidden">
           {links.map(([to, l]) => <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => `flex min-h-[48px] items-center border-b border-white/10 text-base ${isActive ? 'font-bold text-orange' : 'text-slate-200'}`}>{l}</NavLink>)}
           <Link to="/contact" className="btn-p mt-5 w-full">Let’s talk</Link>
         </nav>}

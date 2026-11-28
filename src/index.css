@@ -62,3 +62,8 @@ body { @apply overflow-x-clip bg-slate-50 font-sans text-slate-800 antialiased; 
 .hero-scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(3, 12, 28, .62) 0%, rgba(3, 12, 28, .28) 48%, transparent 78%), linear-gradient(0deg, rgba(3, 12, 28, .35), transparent 30%); }
 @media (max-width: 1023px) { .hero-scrim { background: linear-gradient(180deg, rgba(3, 12, 28, .5) 0%, rgba(3, 12, 28, .34) 55%, rgba(3, 12, 28, .2) 100%); } .hero-beam-2, .hero-orb-orange-3, .hero-orb-blue-2 { display: none; } }
 @media (prefers-reduced-motion: reduce) { .hero-orb, .hero-beam { animation: none !important; } .hero-par { transform: none; } }
+
+/* Internship page: slow ambient glow in the final CTA */
+@keyframes cta-glow { 0%, 100% { transform: translate3d(0, 0, 0); opacity: .9; } 50% { transform: translate3d(30px, 18px, 0); opacity: .6; } }
+.cta-glow { animation: cta-glow 14s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .cta-glow { animation: none; } }
